@@ -119,7 +119,7 @@ def load_image_from_url(image_url: str) -> Image:
     return Image.from_bytes(image_bytes)
 
 def image_processing(photo_url): 
-    genai.configure(api_key=os.environ['API_KEY'])
+    genai.configure(api_key=os.environ['COHERE_API_KEY'])
 
 
     #image = load_image_from_url(photo_url)
@@ -131,7 +131,7 @@ def image_processing(photo_url):
     # # myfile = genai.upload_file(get_image_bytes_from_url(photo_url))
     # print(f"{blob}")
 
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    model = genai.GenerativeModel("gemini-2.5-flash")
     result = model.generate_content( 
     [blob, "\n\n", "Identify the specific type and model of the electronic component, without other unnecessary text"], safety_settings = {
         HarmCategory.HARM_CATEGORY_HARASSMENT : HarmBlockThreshold.BLOCK_ONLY_HIGH,
